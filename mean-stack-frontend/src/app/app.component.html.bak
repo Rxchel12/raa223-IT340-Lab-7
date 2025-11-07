@@ -1,7 +1,0 @@
-<div style="text-align:center; padding-top: 50px;">
-  <h1>MEAN Stack Check</h1>
-  <p><strong>API says:</strong> {{ message }}</p>
-  <hr /> 
-  <p>Frontend: Angular @ http://localhost:4200</p>
-  <p>Backend: Express @ http://localhost:3000/api/Message</p>
-</div>
