@@ -1,11 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-res.send('Hello MEAN Stack!');
+app.use(cors());
+app.use(express.json());
+
+app.get('/api/hello', (_req, res) => {
+  res.json({ message: 'Welcome to MEAN Stack' });
 });
 
-app.listen(port, () => {
-console.log(`Server is running on port ${port}`);
-});
+app.listen(port, () => console.log(`✅ Server running on port ${port}`));

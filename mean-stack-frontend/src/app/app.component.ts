@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { ApiService, ApiResponse } from './api.service';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <div style="font-family: Arial; padding: 24px">
+      <h1>MEAN Stack Check</h1>
+      <p><strong>API says:</strong> {{ message }}</p>
+      <hr />
+      <p>Frontend: Angular @ http://localhost:4200</p>
+      <p>Backend: Express @ http://localhost:3000/api/hello</p>
+    </div>
+  `,
+})
+export class AppComponent implements OnInit {
+  message = 'Attempting to connect to backend...';
+  constructor(private api: ApiService) {}
+  ngOnInit(): void {
+    this.api.getHello().subscribe({
+      next: (res: ApiResponse) => this.message = res.message,
+      error: () => this.message = 'ERROR: Could not connect to Express Backend!',
+    });
+  }
+}
